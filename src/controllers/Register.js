@@ -18,7 +18,7 @@ module.exports = class  {
                     typeof req.body.lastname !== 'string' || req.body.lastname.length > 60) {
                     error = `La longueur maximum autorisé pour vos nom / prénom est de 60 caractères`;
             }
-            else if(typeof req.body.email !== 'string'  ) {
+            else if(typeof req.body.email !== 'string' || !re.test(req.body.email))  {
                 error = 'Votre adresse email n\'est pas correcte';
             } 
             if(!error)  {
