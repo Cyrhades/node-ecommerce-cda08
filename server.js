@@ -2,6 +2,20 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const config = require('./app/config.js');
+const mongoose = require('mongoose');
+
+//--------------------------------------------------------------------
+//      Connexion au server MongoDB
+//--------------------------------------------------------------------
+mongoose.connect(
+    `mongodb+srv://${config.db.user}:${config.db.pwd}@${config.db.cluster}.mongodb.net/${config.db.dbname}`,
+    {connectTimeoutMS : 3000, socketTimeoutMS: 20000, useNewUrlParser: true, useUnifiedTopology: true }
+);
+const db = mongoose.connection;
+db.once('open', () => {
+   console.log(`connexion OK !`);
+});
+
 
 //--------------------------------------------------------------------
 //      Mise en place du moteur de template
@@ -14,6 +28,12 @@ app.set('view engine', 'pug');
 //--------------------------------------------------------------------
 app.use(express.static(path.join(__dirname, 'public')));
  
+
+//--------------------------------------------------------------------
+//      Parser requete HTTP en POST
+//--------------------------------------------------------------------
+app.use(express.urlencoded({ extended: true }));
+
 //--------------------------------------------------------------------
 //      Chargement des routes
 //--------------------------------------------------------------------

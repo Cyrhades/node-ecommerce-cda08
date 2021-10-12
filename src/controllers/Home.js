@@ -1,6 +1,6 @@
 module.exports = class Home {
 
-    print(req, res) {
+    index(req, res) {
         res.render('index');
     }
 }
