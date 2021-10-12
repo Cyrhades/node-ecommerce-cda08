@@ -24,6 +24,14 @@ app.set('views', path.join(__dirname, 'templates'));
 app.set('view engine', 'pug');
  
 //--------------------------------------------------------------------
+// Middleware opermettant de passer des informations à toutes les vues
+//--------------------------------------------------------------------
+app.use((req, res, next) => { 
+    res.locals.route = req._parsedUrl.pathname;
+    next();
+});
+
+//--------------------------------------------------------------------
 //      Mise en place du répertoire static
 //--------------------------------------------------------------------
 app.use(express.static(path.join(__dirname, 'public')));

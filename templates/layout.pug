@@ -8,10 +8,15 @@ html(lang="fr")
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
     body 
         header
-            nav
+            nav.navbar.navbar-expand-lg.navbar-light.bg-light
                 .container
-                    a(href="/") Ecommerce 
-                    a(href="/inscription") Inscription
+                    a.navbar-brand(href="/") E-commerce
+                    .collapse.navbar-collapse
+                        ul.navbar-nav
+                            li
+                                a.nav-link(href="/" class=route=='/'?'active':'') Accueil 
+                            li
+                                a.nav-link(href="/inscription" class=route=='/inscription'?'active':'') Inscription
 
         block content
 
