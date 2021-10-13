@@ -10,4 +10,8 @@ module.exports = class User {
     async emailExists(email) {
         return await UserMongo.findOne({email}) ? true : false;
     }
+
+    async findByEmail(email) {
+        return await UserMongo.findOne({email});
+    }
 }

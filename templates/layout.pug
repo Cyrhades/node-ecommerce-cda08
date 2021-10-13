@@ -13,11 +13,19 @@ html(lang="fr")
                     a.navbar-brand(href="/") E-commerce
                     .collapse.navbar-collapse
                         ul.navbar-nav
-                            li
+                            li.nav-item
                                 a.nav-link(href="/" class=route=='/'?'active':'') Accueil 
-                            li
-                                a.nav-link(href="/inscription" class=route=='/inscription'?'active':'') Inscription
+                            if session.user
+                                li.nav-item
+                                    a.nav-link(href="/deconnexion" class=route=='/deconnexion'?'active':'') Déonnexion
+                            else
+                                li.nav-item
+                                    a.nav-link(href="/inscription" class=route=='/inscription'?'active':'') Inscription
+                                li.nav-item
+                                    a.nav-link(href="/connexion" class=route=='/connexion'?'active':'') Connexion
 
+        if session.user
+            .container Bienvenue #{session.user.firstname}
         block content
 
         footer

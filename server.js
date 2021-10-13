@@ -16,6 +16,14 @@ db.once('open', () => {
    console.log(`connexion OK !`);
 });
 
+//--------------------------------------------------------------------
+//      Ajout du midlleware express session
+//--------------------------------------------------------------------
+const session = require('express-session');
+app.use(session({
+    secret: config.appKey, resave:false, saveUninitialized:false, 
+    cookie: {maxAge: 3600000} 
+}));
 
 //--------------------------------------------------------------------
 //      Mise en place du moteur de template
@@ -27,7 +35,10 @@ app.set('view engine', 'pug');
 // Middleware opermettant de passer des informations à toutes les vues
 //--------------------------------------------------------------------
 app.use((req, res, next) => { 
+    // envoi la route courante à la vue
     res.locals.route = req._parsedUrl.pathname;
+    // envoi les sessions à la vue
+    res.locals.session = req.session; 
     next();
 });
 
