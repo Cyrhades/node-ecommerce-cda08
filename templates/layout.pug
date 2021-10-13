@@ -26,6 +26,17 @@ html(lang="fr")
 
         if session.user
             .container Bienvenue #{session.user.firstname}
+
+        - var messages = getMessages()
+        if messages.success
+            .container.mt-4
+                each msg in messages.success
+                    .alert.alert-success= msg
+        if messages.error
+            .container.mt-4
+                each msg in messages.error
+                    .alert.alert-danger= msg
+
         block content
 
         footer

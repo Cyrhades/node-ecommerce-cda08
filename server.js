@@ -26,6 +26,12 @@ app.use(session({
 }));
 
 //--------------------------------------------------------------------
+//      Ajout du midlleware express flash messages
+//--------------------------------------------------------------------
+const flash = require('express-flash-messages')
+app.use(flash());
+
+//--------------------------------------------------------------------
 //      Mise en place du moteur de template
 //--------------------------------------------------------------------
 app.set('views', path.join(__dirname, 'templates'));

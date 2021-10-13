@@ -26,6 +26,7 @@ module.exports = class  {
                         } else {
                             user.password = null;
                             req.session.user = user;
+                            req.flash('success', 'Vous êtes maintenant connecté');
                             res.redirect('/');
                         }
                     }
@@ -42,7 +43,10 @@ module.exports = class  {
     }
 
     disconnect(req, res) {
-        req.session.destroy();
+        if(typeof req.session.user != 'undefined') {
+            req.session.user = null;
+        }
+        req.flash('error', 'Vous êtes maintenant déconnecté');
         res.redirect('/');
     }
 }

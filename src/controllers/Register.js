@@ -35,7 +35,7 @@ module.exports = class  {
                     else {
                         User.add(req.body.lastname, req.body.firstname, req.body.email, req.body.password)
                         // @todo message dans flashbag
-                         
+                        req.flash('success', 'Vous êtes maintenant inscrit');
                         // redirection vers l'accueil
                         res.redirect('/');
                         return;                       
