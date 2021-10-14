@@ -1,5 +1,5 @@
 const UserModel = require('../models/User');
-module.exports = class  {
+module.exports = class Register  {
 
     index(req, res) {
         res.render('user/register');

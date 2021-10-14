@@ -1,5 +1,5 @@
 const ProductModel = require('../models/Product');
-module.exports = class Home {
+module.exports = class AdminProduct {
 
     index(req, res) {
         res.render('admin/product/list');

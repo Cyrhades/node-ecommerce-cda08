@@ -14,4 +14,12 @@ module.exports = class User {
     async findByEmail(email) {
         return await UserMongo.findOne({email});
     }
+
+    async getAll() {
+        return await UserMongo.find();
+    }
+
+    async delete(id) {
+        return await UserMongo.deleteOne({_id : id});
+    }
 }
