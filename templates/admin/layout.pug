@@ -1,0 +1,31 @@
+doctype html
+html(lang="fr")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Administration E-commerce
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    body 
+        header
+            nav.navbar.navbar-expand-lg.navbar-light.bg-light
+                .container
+                    a.navbar-brand(href="/admin") Administration
+                    .collapse.navbar-collapse
+                        ul.navbar-nav
+                            li.nav-item
+                                a.nav-link(href="/admin/product" class=route=='/admin/product'?'active':'') Produits 
+                           
+
+        - var messages = getMessages()
+        if messages.success
+            .container.mt-4
+                each msg in messages.success
+                    .alert.alert-success= msg
+        if messages.error
+            .container.mt-4
+                each msg in messages.error
+                    .alert.alert-danger= msg
+
+        block content
+

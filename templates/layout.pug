@@ -17,6 +17,8 @@ html(lang="fr")
                                 a.nav-link(href="/" class=route=='/'?'active':'') Accueil 
                             if session.user
                                 li.nav-item
+                                    a.nav-link(href="/admin" class=route=='/admin'?'active':'') Administration
+                                li.nav-item
                                     a.nav-link(href="/deconnexion" class=route=='/deconnexion'?'active':'') Déonnexion
                             else
                                 li.nav-item

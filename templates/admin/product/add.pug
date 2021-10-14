@@ -1,0 +1,21 @@
+extends ../layout.pug
+
+block content
+    .container
+        h1 Création d'un nouveau produit
+        if error 
+            .alert.alert-danger
+                = error
+        form(method="post")
+            .form-group
+                label(for="title") Désignation du produit
+                input.form-control(type="text" maxlength="160" value=title id="title" name="title" placeholder="Désignation" required)
+            .form-group
+                label(for="description") Description du produit
+                textarea.form-control(rows="4" id="description" name="description" placeholder="Description" required)= description
+            .form-group
+                label(for="price") Prix
+                input.form-control(type="number" step="0.01" min="0" id="price" value=price name="price" placeholder="Prix en €" required)
+
+    
+            button.btn.btn-primary(type="submit") Enregistrer
