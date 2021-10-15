@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const ProductSchema = mongoose.Schema({
-    tilte: { type: String },
+    title: { type: String },
     description: { type: String },
     price : {  type: Number },
     photos : { type: Array },

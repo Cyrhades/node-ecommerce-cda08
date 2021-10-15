@@ -65,6 +65,12 @@ module.exports = (app) => {
         })
         .all(errorsHTTP.error405);
 
+    app.route('/admin/product/delete/:id')
+        .get((req, res) => {
+            let Controller = require('../src/controllers/AdminProduct.js');
+            (new Controller).delete(req, res);
+        })
+        .all(errorsHTTP.error405);
 
     
     app.route('/admin/user')

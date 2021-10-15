@@ -2,7 +2,9 @@ const ProductModel = require('../models/Product');
 module.exports = class AdminProduct {
 
     index(req, res) {
-        res.render('admin/product/list');
+        (new ProductModel).getAll().then((products) => {
+            res.render('admin/product/list', { products } );
+        })
     }
 
     add(req, res) {
@@ -42,5 +44,12 @@ module.exports = class AdminProduct {
         } else {
             res.render('admin/product/add',{ error: `Le formulaire n'pas été soumis correctement.` });
         }
+    }
+
+
+    delete(req, res) {
+        (new ProductModel).delete(req.params.id).then(() => {
+            res.redirect('/admin/product');
+        });
     }
 }
